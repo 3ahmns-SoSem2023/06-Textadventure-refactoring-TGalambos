@@ -51,7 +51,8 @@ public class AdventureGameOld : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         actualState = startingState;
         textIntroComponent.text = actualState.GetStateStory();
         textComponentChoises.text = actualState.GetStateStoryMenue();

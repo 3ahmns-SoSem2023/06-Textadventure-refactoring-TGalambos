@@ -3,7 +3,6 @@
 [CreateAssetMenu(menuName = "State")]
 public class State : ScriptableObject
 {
-
     //private static readonly System.Random getrandom = new System.Random(123);
 
     [TextArea(10,14)][SerializeField] string storyText;
