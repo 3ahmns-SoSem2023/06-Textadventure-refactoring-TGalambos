@@ -211,7 +211,7 @@ public class AdventureGameOld : MonoBehaviour
             overrideTextComponent = false;
         }
 
-        if(currentState.name == "Fight.Do" && (nextState.name == "Collect.Info" || nextState.name == "Fight.Do")
+        if(currentState.name == "Fight.Do" && (nextState.name == "Collect.Info" || nextState.name == "Fight.Do"))
         {
 
             Debug.Log("wool before Fight in kg: " + collectedWoolCount);
