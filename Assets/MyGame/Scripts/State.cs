@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "State")]
-public class State : ScriptableObject{
+public class State : ScriptableObject
+{
 
     //private static readonly System.Random getrandom = new System.Random(123);
 
@@ -38,7 +36,6 @@ public class State : ScriptableObject{
         {
             extendedArray[i + 1] = nextStates[i];
         }
-
         return extendedArray;
     }
 
@@ -51,11 +48,7 @@ public class State : ScriptableObject{
             Debug.Log("< " + probabilityPrefered);
             return idxPrefered;
         }
-        else
-        {
-            Debug.Log("> " + probabilityPrefered);
-            return RandomState.getrandom.Next(randomMin, randomMax);
-        } 
+        Debug.Log("> " + probabilityPrefered);
+        return RandomState.getrandom.Next(randomMin, randomMax);
     }
-
 }

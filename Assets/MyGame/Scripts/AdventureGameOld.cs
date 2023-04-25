@@ -2,7 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AdventureGameOld : MonoBehaviour {
+public class AdventureGameOld : MonoBehaviour
+{
 
     private static readonly System.Random getrandom = new System.Random();
     [SerializeField] Text textIntroComponent;
@@ -33,7 +34,6 @@ public class AdventureGameOld : MonoBehaviour {
     {
         introBG.enabled = textIntroComponent.enabled = true;
         storyMenueBG.enabled = textComponentChoises.enabled = true;
-
         storyBG.enabled = textStoryComponent.enabled = false;
         humanStateBG.enabled = humanStateTxt.enabled = false;
         woolStateBG.enabled = woolStateTxt.enabled = false;
@@ -44,7 +44,6 @@ public class AdventureGameOld : MonoBehaviour {
     {
         introBG.enabled = textIntroComponent.enabled = false;
         storyMenueBG.enabled = textComponentChoises.enabled = true;
-
         storyBG.enabled = textStoryComponent.enabled = true;
         humanStateBG.enabled = humanStateTxt.enabled = true;
         woolStateBG.enabled = woolStateTxt.enabled = true;
@@ -67,7 +66,8 @@ public class AdventureGameOld : MonoBehaviour {
 	}
 
     // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
         ManageState();
 	}
 
@@ -189,11 +189,11 @@ public class AdventureGameOld : MonoBehaviour {
 
         if ((currentState.name == "Knit.Info"|| nextState.name == "Knit.Do") && nextState.name == "Knit.Do")
         {
-            if(collectedWoolCount >= 2){
+            if(collectedWoolCount >= 2)
+            {
                 collectedWoolCount -= 2;
                 dehydrationCount -= 1.5;
-                Debug.Log("Wool Knitted -2kg + 1L water for magda, current dehydration" + dehydrationCount );
-
+                Debug.Log("Wool Knitted -2kg + 1L water for magda, current dehydration" + dehydrationCount);
             }
             else
             {
@@ -211,17 +211,15 @@ public class AdventureGameOld : MonoBehaviour {
             overrideTextComponent = false;
         }
 
-        if(currentState.name == "Fight.Do" && (nextState.name == "Collect.Info" || nextState.name == "Fight.Do"))
+        if(currentState.name == "Fight.Do" && (nextState.name == "Collect.Info" || nextState.name == "Fight.Do")
         {
 
             Debug.Log("wool before Fight in kg: " + collectedWoolCount);
             collectedWoolCount += getrandom.Next(0, 3);
             collectedWoolCount = Clamp(collectedWoolCount, 0, 5);
             Debug.Log("wool after Fight in kg: " + collectedWoolCount);
-
         }
-
-            return nextState;
+        return nextState;
     }
 
     private int Clamp(int value, int cmin, int cmax)
@@ -263,7 +261,7 @@ public class AdventureGameOld : MonoBehaviour {
                 return;
             }
             State nextState = nextStates[2];
-            actualState = doTransition(actualState, nextState); ;
+            actualState = doTransition(actualState, nextState);
         }
         else
         {
@@ -281,7 +279,6 @@ public class AdventureGameOld : MonoBehaviour {
             {
                 textIntroComponent.text = overrideText;
             }
-            
         }
         else
         {
@@ -295,8 +292,6 @@ public class AdventureGameOld : MonoBehaviour {
                 textIntroComponent.text = actualState.GetStateStory();
             }
         }
-
-
         textComponentChoises.text = actualState.GetStateStoryMenue();
         humanStateTxt.text = GetDehydrationText();
         woolStateTxt.text = GetWoolText();
