@@ -77,16 +77,6 @@ public class AdventureGame : MonoBehaviour
         ManageState();
     }
 
-    private string GetDehydrationText()
-    {
-        string txt = "Human \n" +
-                     "Name: Magda \n" +
-                     "Age: 21 \n" +
-                     "Dehydration: \n" +
-                     dehydrationCount + " %";
-        return txt;
-    }
-
     private void ResetCounters()
     {
         passedStatesCount = 0;
@@ -287,7 +277,11 @@ public class AdventureGame : MonoBehaviour
 
 
         textComponentChoices.text = actualState.GetStateStoryMenue();
-        humanStateTxt.text = GetDehydrationText();
+        humanStateTxt.text = "Human \n" +
+                             "Name: Magda \n" +
+                             "Age: 21 \n" +
+                             "Dehydration: \n" +
+                             dehydrationCount + " %";
         woolStateTxt.text = "Wool collected (kg): " + collectedWoolCount;
     }
 }
