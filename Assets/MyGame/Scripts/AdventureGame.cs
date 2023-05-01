@@ -87,12 +87,6 @@ public class AdventureGame : MonoBehaviour
         return txt;
     }
 
-    private string GetWoolText()
-    {
-        string txt = "Wool collected (kg): " + collectedWoolCount;
-        return txt;
-    }
-
     private void ResetCounters()
     {
         passedStatesCount = 0;
@@ -294,6 +288,6 @@ public class AdventureGame : MonoBehaviour
 
         textComponentChoices.text = actualState.GetStateStoryMenue();
         humanStateTxt.text = GetDehydrationText();
-        woolStateTxt.text = GetWoolText();
+        woolStateTxt.text = "Wool collected (kg): " + collectedWoolCount;
     }
 }
