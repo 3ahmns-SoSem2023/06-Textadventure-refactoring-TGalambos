@@ -6,6 +6,9 @@ public class AdventureGame : MonoBehaviour
 {
     private const string stateInfoAlarm = "Info.Alarm";
     private const string stateDo = "Knit.Do";
+    private const string doCollect = "Collect.Do";
+    private const string doneInfo = "Info.Done";
+    private const string collectInfo = "Collect.Info";
 
     //private static readonly System.Random getrandom = new System.Random(123);
 
@@ -136,7 +139,7 @@ public class AdventureGame : MonoBehaviour
 
         if (currentState.name == nextState.name)
         {
-            if (nextState.name == stateDo || nextState.name == "Fight.Attack" || nextState.name == "Collect.Do")
+            if (nextState.name == stateDo || nextState.name == "Fight.Attack" || nextState.name == doCollect)
             {
                 wait = false;
                 overrideText = "reset in do|attack";
@@ -149,13 +152,13 @@ public class AdventureGame : MonoBehaviour
 
         }
 
-        if (nextState.name == "Info.Done" || nextState.name == "Collect.Info")
+        if (nextState.name == doneInfo || nextState.name == collectInfo)
         {
             SetupInfoUI();
             overrideTextComponent = false;
         }
 
-        if (currentState.name == "Info.Human" && nextState.name == "Info.Done")
+        if (currentState.name == "Info.Human" && nextState.name == doneInfo)
         {
             overrideTextComponent = true;
             overrideText = "Notification: Crime scene investigation revealed that robots destroyed all water inventories and water sponge warehouses. " + "\n \n" +
@@ -163,7 +166,7 @@ public class AdventureGame : MonoBehaviour
                            "Notification: Collect wool and knit water sponges which are able to make water out of air. ";
         }
 
-        if (currentState.name == "Info.Accident" && nextState.name == "Info.Done")
+        if (currentState.name == "Info.Accident" && nextState.name == doneInfo)
         {
             overrideTextComponent = true;
             overrideText = "Magda is a 21 year old woman. She loves salty food and is doing a lot of sports." + "\n" +
@@ -172,12 +175,12 @@ public class AdventureGame : MonoBehaviour
                            "survive until rescue is approaching.";
         }
 
-        if (currentState.name == "Info.Done" && nextState.name == "Collect")
+        if (currentState.name == doneInfo && nextState.name == "Collect")
         {
             overrideTextComponent = false;
         }
 
-        if ((currentState.name == "Collect.Info" || currentState.name == "Collect.Do") && nextState.name == "Collect.Do")
+        if ((currentState.name == collectInfo || currentState.name == doCollect) && nextState.name == doCollect)
         {
             int nbrWool = RandomState.getrandom.Next(1, 3);
             collectedWoolCount += nbrWool;
@@ -206,12 +209,12 @@ public class AdventureGame : MonoBehaviour
             return nextState;
         }
 
-        if (currentState.name == stateDo && currentState.name == "Collect.Info")
+        if (currentState.name == stateDo && currentState.name == collectInfo)
         {
             overrideTextComponent = false;
         }
 
-        if (currentState.name == "Fight.Do" && (nextState.name == "Collect.Info" || nextState.name == "Fight.Do"))
+        if (currentState.name == "Fight.Do" && (nextState.name == collectInfo || nextState.name == "Fight.Do"))
         {
             Debug.Log("wool before Fight in kg: " + collectedWoolCount);
             collectedWoolCount += RandomState.getrandom.Next(0, 3);
