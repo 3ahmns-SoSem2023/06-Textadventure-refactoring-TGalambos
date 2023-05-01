@@ -9,6 +9,7 @@ public class AdventureGame : MonoBehaviour
     private const string doCollect = "Collect.Do";
     private const string doneInfo = "Info.Done";
     private const string collectInfo = "Collect.Info";
+    private const int maxDehydration = 20;
 
     //private static readonly System.Random getrandom = new System.Random(123);
 
@@ -103,7 +104,7 @@ public class AdventureGame : MonoBehaviour
     {
 
         passedStatesCount += 1;
-        dehydrationCount = (dehydrationCount < 20) ? dehydrationCount += 0.5 : dehydrationCount = 20;
+        dehydrationCount = (dehydrationCount < maxDehydration) ? dehydrationCount += 0.5 : dehydrationCount = maxDehydration;
 
         if (passedStatesCount == statesUntilRescue)
         {
@@ -113,7 +114,7 @@ public class AdventureGame : MonoBehaviour
             return rescue;
         }
 
-        if (dehydrationCount == 20)
+        if (dehydrationCount == maxDehydration)
         {
             Debug.Log("Exit Dehydration " + dehydrationCount);
             overrideTextComponent = wait = false;
